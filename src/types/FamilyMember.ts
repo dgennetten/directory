@@ -5,7 +5,6 @@ export interface FamilyMember {
   email: string;
   address: string;
   birthday: string;
-  age: number;
   generation: string;
   birthdayDate: Date;
   deceased: boolean;

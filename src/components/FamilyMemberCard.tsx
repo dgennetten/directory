@@ -1,7 +1,7 @@
 import React from 'react';
 import { Phone, Mail, MapPin, Calendar, User, Heart } from 'lucide-react';
 import { FamilyMember } from '../types/FamilyMember';
-import { isBirthdaySoon, getGenerationColor, calculateWouldBeAge } from '../utils/generationUtils';
+import { isBirthdaySoon, getGenerationColor, calculateWouldBeAge, calculateLivedAge, calculateAge } from '../utils/generationUtils';
 
 interface FamilyMemberCardProps {
   member: FamilyMember;
@@ -11,6 +11,8 @@ const FamilyMemberCard: React.FC<FamilyMemberCardProps> = ({ member }) => {
   const birthdaySoon = isBirthdaySoon(member.birthdayDate) && !member.deceased;
   const generationColorClass = getGenerationColor(member.generation);
   const wouldBeAge = calculateWouldBeAge(member.birthdayDate);
+  const livedAge = member.deceased && member.deathDate ? calculateLivedAge(member.birthdayDate, member.deathDate) : undefined;
+  const currentAge = !member.deceased ? calculateAge(member.birthdayDate) : undefined;
 
   return (
     <div 
@@ -47,10 +49,10 @@ const FamilyMemberCard: React.FC<FamilyMemberCardProps> = ({ member }) => {
               <span className="text-sm">
                 {member.deceased ? (
                   <span>
-                    Would be {wouldBeAge} • Lived {member.age} years
+                    Would be {wouldBeAge} • Lived {livedAge} years
                   </span>
                 ) : (
-                  `Age ${member.age}`
+                  `Age ${currentAge}`
                 )}
               </span>
             </div>

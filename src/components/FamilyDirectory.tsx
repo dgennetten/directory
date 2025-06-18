@@ -1,14 +1,21 @@
 import React, { useState, useMemo } from 'react';
 import { Users, LogOut } from 'lucide-react';
 import { familyMembers } from '../data/familyData';
-import { GenerationFilter } from '../types/FamilyMember';
-import { isBirthdaySoon } from '../utils/generationUtils';
+import { GenerationFilter, FamilyMember } from '../types/FamilyMember';
+import { isBirthdaySoon, calculateAge, calculateLivedAge } from '../utils/generationUtils';
 import SearchBar from './SearchBar';
 import FamilyMemberCard from './FamilyMemberCard';
 
 interface FamilyDirectoryProps {
   onLogout: () => void;
 }
+
+const getSortAge = (member: FamilyMember) => {
+  if (member.deceased && member.deathDate) {
+    return calculateLivedAge(member.birthdayDate, member.deathDate);
+  }
+  return calculateAge(member.birthdayDate);
+};
 
 const FamilyDirectory: React.FC<FamilyDirectoryProps> = ({ onLogout }) => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -42,7 +49,7 @@ const FamilyDirectory: React.FC<FamilyDirectoryProps> = ({ onLogout }) => {
     }
 
     // Sort by age (oldest first)
-    return filtered.sort((a, b) => b.age - a.age);
+    return filtered.sort((a, b) => getSortAge(b) - getSortAge(a));
   }, [searchTerm, activeFilter]);
 
   const totalMembers = familyMembers.length;
