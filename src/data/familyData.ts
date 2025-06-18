@@ -1,5 +1,5 @@
 import { FamilyMember } from '../types/FamilyMember';
-import { parseBirthday, getGeneration, parseDeathDate } from '../utils/generationUtils';
+import { parseBirthday, getGeneration, parseDeathDate, calculateAge, calculateLivedAge } from '../utils/generationUtils';
 
 const rawData = [
   ['Wm Gardner', '', '', '', '26-Jan-1906', true, '15-Mar-1985'],
@@ -32,7 +32,25 @@ const rawData = [
   ['Julian Atlas', '', '', '', '13-Oct-22', false, '']
 ];
 
-export const familyMembers: FamilyMember[] = rawData
+// Sort rawData by age (oldest first)
+const sortedRawData = rawData.sort((a, b) => {
+  const birthdayA = parseBirthday(String(a[4]));
+  const birthdayB = parseBirthday(String(b[4]));
+  const deathDateA = parseDeathDate(String(a[6] || ''));
+  const deathDateB = parseDeathDate(String(b[6] || ''));
+  
+  // Calculate ages for sorting
+  const ageA = Boolean(a[5]) && deathDateA 
+    ? calculateLivedAge(birthdayA, deathDateA) 
+    : calculateAge(birthdayA);
+  const ageB = Boolean(b[5]) && deathDateB 
+    ? calculateLivedAge(birthdayB, deathDateB) 
+    : calculateAge(birthdayB);
+  
+  return ageB - ageA; // Oldest first
+});
+
+export const familyMembers: FamilyMember[] = sortedRawData
   .filter(row => String(row[0]).trim() !== '') // Filter out empty names
   .map((row, index) => {
     const birthdayDate = parseBirthday(String(row[4]));
