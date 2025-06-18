@@ -1,5 +1,5 @@
 import React from 'react';
-import { Search, X } from 'lucide-react';
+import { Search, X, FileText } from 'lucide-react';
 import { GenerationFilter } from '../types/FamilyMember';
 
 interface SearchBarProps {
@@ -54,7 +54,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
         )}
       </div>
       
-      <div className="flex flex-wrap gap-2">
+      <div className="flex flex-wrap gap-2 mb-4">
         {filters.map((filter) => (
           <button
             key={filter}
@@ -68,6 +68,18 @@ const SearchBar: React.FC<SearchBarProps> = ({
             {filter}
           </button>
         ))}
+      </div>
+
+      <div className="border-t border-gray-200 pt-4">
+        <a
+          href="/Gennetten Directory.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center text-sm text-blue-600 hover:text-blue-800 transition-colors"
+        >
+          <FileText className="w-4 h-4 mr-2" />
+          Don's Latest Directory (pdf)
+        </a>
       </div>
     </div>
   );
