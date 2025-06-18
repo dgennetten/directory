@@ -2,13 +2,13 @@ import { FamilyMember } from '../types/FamilyMember';
 import { parseBirthday, calculateAge, getGeneration, parseDeathDate, calculateLivedAge } from '../utils/generationUtils';
 
 const rawData = [
-  ['Wm Gardner', '', '', '', '26-Jan-1906', '119', true, '15-Mar-1985'],
-  ['Ellen Gardner', '', '', '', '17-Feb-1907', '118', true, '22-Jul-1992'],
-  ['Delbert Gennetten', '', '', '', '15-Jan-27', '98', true, '11-Apr-2017'],
-  ['Virginia Gennetten', '', '', '', '18-Nov-28', '96', true, '21-May-2020'],
+  ['Wm Gardner', '', '', 'Heaven', '26-Jan-1906', '119', true, '15-Mar-1985'],
+  ['Ellen Gardner', '', '', 'Heaven', '17-Feb-1907', '118', true, '22-Jul-1992'],
+  ['Delbert Gennetten', '', '', 'Heaven', '15-Jan-27', '98', true, '11-Apr-2017'],
+  ['Virginia Gennetten', '', '', 'Heaven', '18-Nov-28', '96', true, '21-May-2020'],
   ['Gary Ordway', '(515) 240-6393', '', '', '10-Feb-42', '83', false, ''],
   ['Linda Ordway', '(515) 490-6710', '', '', '17-Apr-41', '84', false, ''],
-  ['Judy Wesslen', '', '', '', '17-Sep-50', '74', true, '18-Dec-2023'],
+  ['Judy Wesslen', '', '', 'Heaven', '17-Sep-50', '74', true, '18-Dec-2023'],
   ['Jim Brauer', '', '', '9232 E Arizona Cypress Pl, Tucson, AZ. 85641', '', '', false, ''],
   ['Janell Brauer', '(720) 449-6159', '', '9232 E Arizona Cypress Pl, Tucson, AZ. 85641', '31-Jan-52', '73', false, ''],
   ['Don Gennetten', '(303) 585-1147', 'dongennetten@yahoo.com', '12896 W Arizona Pl, Lakewood, CO 80228', '23-Jun-54', '70', false, ''],
