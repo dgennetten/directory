@@ -23,7 +23,7 @@ const rawData = [
   ['Darren Gennetten', '(970) 825-8593', 'darren@gennetten.com', '', '07-Apr-86', false, ''],
   ['Landon A', '(970) 219-6075', 'landon@gennetten.com', '2225 Pineview Cir, Spartanburg, SC 29302', '19-Jul-88', false, ''],
   ['Kelley Atlas', '(678) 794-7419', '', '2225 Pineview Cir, Spartanburg, SC 29302', '', false, ''],
-  ['Evan Gennetten', '(720) 487-6513', 'evan@gennetten.org', '', '07-May-97', false, ''],
+  ['Evan Gennetten', '(720) 487-6513', 'evan@gennetten.org', '15462 117th Ave, Commerce City, CO 80022', '07-May-97', false, ''],
   ['Luca Ordway', '(970) 214-8802', '', '', '07-Apr-00', false, ''],
   ['Anthony Ordway', '(970) 481-4362', '', '', '03-Nov-01', false, ''],
   ['Noah Ordway Rodriguez', '(970) 508-7018', 'noah@gennetten.com', '1234 Trappers Pt, Fort Collins, CO. 80524', '21-Oct-07', false, ''],
