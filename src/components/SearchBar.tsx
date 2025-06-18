@@ -80,7 +80,10 @@ const SearchBar: React.FC<SearchBarProps> = ({
         ))}
       </div>
 
-      <div className="border-t border-gray-200 pt-4">
+      <div className="border-t border-gray-200 pt-4 flex justify-between items-center">
+        <span className="text-sm text-gray-500">
+          List is sorted by age (lived).
+        </span>
         <a
           href="/Gennetten Directory.pdf"
           target="_blank"
