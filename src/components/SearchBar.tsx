@@ -39,10 +39,20 @@ const SearchBar: React.FC<SearchBarProps> = ({
           placeholder="Search family members..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+          className="w-full pl-10 pr-10 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
         />
+        {searchTerm && (
+          <button
+            type="button"
+            onClick={() => setSearchTerm('')}
+            className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600 focus:outline-none"
+            aria-label="Clear search"
+          >
+            <X className="w-5 h-5" />
+          </button>
+        )}
         {activeFilter !== 'All' && (
-          <div className="absolute right-3 top-1/2 transform -translate-y-1/2 flex items-center bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm">
+          <div className="absolute right-12 top-1/2 transform -translate-y-1/2 flex items-center bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm">
             <span className="mr-2">{activeFilter}</span>
             <button
               onClick={() => setActiveFilter('All')}
