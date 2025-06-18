@@ -75,3 +75,40 @@ export const getGenerationColor = (generation: string): string => {
   };
   return colors[generation] || 'bg-gray-100 border-gray-300 text-gray-800';
 };
+
+export const parseDeathDate = (deathDateStr: string): Date | null => {
+  if (!deathDateStr.trim()) return null;
+  
+  const [day, month, year] = deathDateStr.split('-');
+  const monthMap: { [key: string]: number } = {
+    'Jan': 0, 'Feb': 1, 'Mar': 2, 'Apr': 3, 'May': 4, 'Jun': 5,
+    'Jul': 6, 'Aug': 7, 'Sep': 8, 'Oct': 9, 'Nov': 10, 'Dec': 11
+  };
+  
+  let fullYear: number;
+  const yearNum = parseInt(year);
+  
+  // Handle 2-digit years - assume 19xx for years >= 25, 20xx for < 25
+  if (yearNum < 100) {
+    fullYear = yearNum >= 25 ? 1900 + yearNum : 2000 + yearNum;
+  } else {
+    fullYear = yearNum;
+  }
+  
+  return new Date(fullYear, monthMap[month] || 0, parseInt(day));
+};
+
+export const calculateLivedAge = (birthDate: Date, deathDate: Date): number => {
+  let age = deathDate.getFullYear() - birthDate.getFullYear();
+  const monthDiff = deathDate.getMonth() - birthDate.getMonth();
+  
+  if (monthDiff < 0 || (monthDiff === 0 && deathDate.getDate() < birthDate.getDate())) {
+    age--;
+  }
+  
+  return age;
+};
+
+export const calculateWouldBeAge = (birthDate: Date): number => {
+  return calculateAge(birthDate); // This is the same as current age calculation
+};

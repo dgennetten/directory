@@ -1,7 +1,7 @@
 import React from 'react';
 import { Phone, Mail, MapPin, Calendar, User, Heart } from 'lucide-react';
 import { FamilyMember } from '../types/FamilyMember';
-import { isBirthdaySoon, getGenerationColor } from '../utils/generationUtils';
+import { isBirthdaySoon, getGenerationColor, calculateWouldBeAge } from '../utils/generationUtils';
 
 interface FamilyMemberCardProps {
   member: FamilyMember;
@@ -10,6 +10,7 @@ interface FamilyMemberCardProps {
 const FamilyMemberCard: React.FC<FamilyMemberCardProps> = ({ member }) => {
   const birthdaySoon = isBirthdaySoon(member.birthdayDate) && !member.deceased;
   const generationColorClass = getGenerationColor(member.generation);
+  const wouldBeAge = calculateWouldBeAge(member.birthdayDate);
 
   return (
     <div 
@@ -44,7 +45,13 @@ const FamilyMemberCard: React.FC<FamilyMemberCardProps> = ({ member }) => {
             <div className="flex items-center text-gray-600 mb-2">
               <User className="w-4 h-4 mr-1" />
               <span className="text-sm">
-                {member.deceased ? `Lived ${member.age} years` : `Age ${member.age}`}
+                {member.deceased ? (
+                  <span>
+                    Would be {wouldBeAge} • Lived {member.age} years
+                  </span>
+                ) : (
+                  `Age ${member.age}`
+                )}
               </span>
             </div>
           </div>
@@ -60,6 +67,19 @@ const FamilyMemberCard: React.FC<FamilyMemberCardProps> = ({ member }) => {
               <Calendar className="w-4 h-4 mr-3 text-gray-400" />
               <span className="text-sm">
                 {new Date(member.birthdayDate).toLocaleDateString('en-US', {
+                  month: 'long',
+                  day: 'numeric',
+                  year: 'numeric'
+                })}
+              </span>
+            </div>
+          )}
+
+          {member.deceased && member.deathDate && (
+            <div className="flex items-center text-gray-500">
+              <Heart className="w-4 h-4 mr-3 text-red-400" />
+              <span className="text-sm">
+                Passed away {member.deathDate.toLocaleDateString('en-US', {
                   month: 'long',
                   day: 'numeric',
                   year: 'numeric'

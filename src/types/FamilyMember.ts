@@ -9,6 +9,8 @@ export interface FamilyMember {
   generation: string;
   birthdayDate: Date;
   deceased: boolean;
+  dateOfDeath?: string;
+  deathDate?: Date;
 }
 
 export type GenerationFilter = 
