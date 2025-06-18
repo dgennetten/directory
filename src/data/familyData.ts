@@ -28,8 +28,9 @@ const rawData = [
   ['Anthony Ordway', '(970) 481-4362', '', '', '03-Nov-01', false, ''],
   ['Noah Ordway Rodriguez', '(970) 508-7018', 'noah@gennetten.com', '1234 Trappers Pt, Fort Collins, CO. 80524', '21-Oct-07', false, ''],
   ['Isabella Ordway Rodriguiz', '(970) 231-1316', 'isabella@gennetten.com', '1234 Trappers Pt, Fort Collins, CO. 80524', '03-Jun-09', false, ''],
-  ['Jade Atlas', '', '', '', '06-Jun-19', false, ''],
-  ['Julian Atlas', '', '', '', '13-Oct-22', false, '']
+  ['Jade Atlas', '', '', '2225 Pineview Cir, Spartanburg, SC 29302', '06-Jun-19', false, ''],
+  ['Julian Atlas', '', '', '2225 Pineview Cir, Spartanburg, SC 29302', '13-Oct-22', false, ''],
+  ['Baby Atlas', '', '', '2225 Pineview Cir, Spartanburg, SC 29302', '11-Feb-2026', false, '']
 ];
 
 // Sort rawData by age (oldest first)

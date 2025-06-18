@@ -82,7 +82,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
 
       <div className="border-t border-gray-200 pt-4 flex justify-between items-center">
         <span className="text-sm text-gray-500">
-          List is sorted by age (lived).
+          List is sorted by age (lived), if known.
         </span>
         <a
           href="/Gennetten Directory.pdf"
