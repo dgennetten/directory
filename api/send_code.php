@@ -21,7 +21,9 @@ $allowed_emails = [
   'noah@gennetten.com',
   'isabella@gennetten.com',
   'kelley.atlas@gmail.com',
-  'landon.atlas@protonmail.com'
+  'landon.atlas@protonmail.com',
+  'janellbrauer@yahoo.com',
+  'brauer.jim@me.com'
 ];
 
 $data = json_decode(file_get_contents('php://input'), true);
