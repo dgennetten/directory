@@ -21,8 +21,8 @@ const rawData = [
   ['Jodi Joice', '(720) 840-1717', 'jodijoice@rocketmail.com', '7469 S Teller St, Littleton, CO 80128', ' ', false, ''],
   ['Angeline Brauer', '(240) 280-4341', 'angberda@gmail.com', '3430 Watershed Blvd, Laurel, MD 20724', ' ', false, ''],
   ['Darren Gennetten', '(970) 825-8593', 'darren@gennetten.com', '', '07-Apr-86', false, ''],
-  ['Landon A', '(970) 219-6075', 'landon@gennetten.com', '2225 Pineview Cir, Spartanburg, SC 29302', '19-Jul-88', false, ''],
-  ['Kelley Atlas', '(678) 794-7419', '', '2225 Pineview Cir, Spartanburg, SC 29302', '', false, ''],
+  ['Landon A', '(970) 219-6075', 'landon.atlas@protonmail.com', '2225 Pineview Cir, Spartanburg, SC 29302', '19-Jul-88', false, ''],
+  ['Kelley Atlas', '(678) 794-7419', 'kelley.atlas@gmail.com', '2225 Pineview Cir, Spartanburg, SC 29302', '', false, ''],
   ['Evan Gennetten', '(720) 487-6513', 'evan@gennetten.org', '15462 117th Ave, Commerce City, CO 80022', '07-May-97', false, ''],
   ['Luca Ordway', '(970) 214-8802', '', '', '07-Apr-00', false, ''],
   ['Anthony Ordway', '(970) 481-4362', '', '', '03-Nov-01', false, ''],
@@ -30,7 +30,6 @@ const rawData = [
   ['Isabella Ordway Rodriguiz', '(970) 231-1316', 'isabella@gennetten.com', '1234 Trappers Pt, Fort Collins, CO. 80524', '03-Jun-09', false, ''],
   ['Jade Atlas', '', '', '2225 Pineview Cir, Spartanburg, SC 29302', '06-Jun-19', false, ''],
   ['Julian Atlas', '', '', '2225 Pineview Cir, Spartanburg, SC 29302', '13-Oct-22', false, ''],
-  ['Baby Atlas', '', '', '2225 Pineview Cir, Spartanburg, SC 29302', '11-Feb-2026', false, '']
 ];
 
 // Sort rawData by age (oldest first)
