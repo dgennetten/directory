@@ -1,5 +1,5 @@
 import { FamilyMember } from '../types/FamilyMember';
-import { parseBirthday, getGeneration, parseDeathDate, calculateAge, calculateLivedAge } from '../utils/generationUtils';
+import { parseBirthday, getGeneration, parseDeathDate, calculateAgeWithMonths, calculateLivedAgeWithMonths } from '../utils/generationUtils';
 
 const rawData = [
   ['Wm Gardner', '', '', '', '26-Jan-1906', true, '15-Mar-1985'],
@@ -8,7 +8,7 @@ const rawData = [
   ['Virginia Gennetten', '', '', '', '18-Nov-28', true, '21-May-2020'],
   ['Gary Ordway', '(515) 240-6393', '', '', '10-Feb-42', false, ''],
   ['Linda Ordway', '(515) 490-6710', '', '', '17-Apr-41', false, ''],
-  ['Judy Wesslen', '', '', '', '17-Sep-50', true, '12-Nov-2018'],
+  ['Judy Wesslen', '', '', '', '17-Sep-50', true, '18-Dec-2023'],
   ['Jim Brauer', '', 'brauer.jim@me.com', '9232 E Arizona Cypress Pl, Tucson, AZ. 85641', '', false, ''],
   ['Janell Brauer', '(720) 449-6159', 'janellbrauer@yahoo.com', '9232 E Arizona Cypress Pl, Tucson, AZ. 85641', '31-Jan-52', false, ''],
   ['Don Gennetten', '(303) 585-1147', 'dongennetten@yahoo.com', '12896 W Arizona Pl, Lakewood, CO 80228', '23-Jun-54', false, ''],
@@ -39,15 +39,19 @@ const sortedRawData = rawData.sort((a, b) => {
   const deathDateA = parseDeathDate(String(a[6] || ''));
   const deathDateB = parseDeathDate(String(b[6] || ''));
   
-  // Calculate ages for sorting
+  // Calculate ages for sorting using the new functions with months
   const ageA = Boolean(a[5]) && deathDateA 
-    ? calculateLivedAge(birthdayA, deathDateA) 
-    : calculateAge(birthdayA);
+    ? calculateLivedAgeWithMonths(birthdayA, deathDateA) 
+    : calculateAgeWithMonths(birthdayA);
   const ageB = Boolean(b[5]) && deathDateB 
-    ? calculateLivedAge(birthdayB, deathDateB) 
-    : calculateAge(birthdayB);
+    ? calculateLivedAgeWithMonths(birthdayB, deathDateB) 
+    : calculateAgeWithMonths(birthdayB);
   
-  return ageB - ageA; // Oldest first
+  // Convert to total months for accurate comparison
+  const totalMonthsA = ageA.years * 12 + ageA.months;
+  const totalMonthsB = ageB.years * 12 + ageB.months;
+  
+  return totalMonthsB - totalMonthsA; // Oldest first
 });
 
 export const familyMembers: FamilyMember[] = sortedRawData

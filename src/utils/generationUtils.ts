@@ -112,3 +112,38 @@ export const calculateLivedAge = (birthDate: Date, deathDate: Date): number => {
 export const calculateWouldBeAge = (birthDate: Date): number => {
   return calculateAge(birthDate); // This is the same as current age calculation
 };
+
+export const calculateAgeWithMonths = (birthDate: Date): { years: number; months: number } => {
+  const today = new Date();
+  let years = today.getFullYear() - birthDate.getFullYear();
+  let months = today.getMonth() - birthDate.getMonth();
+  
+  if (months < 0 || (months === 0 && today.getDate() < birthDate.getDate())) {
+    years--;
+    months += 12;
+  }
+  
+  return { years, months };
+};
+
+export const calculateLivedAgeWithMonths = (birthDate: Date, deathDate: Date): { years: number; months: number } => {
+  let years = deathDate.getFullYear() - birthDate.getFullYear();
+  let months = deathDate.getMonth() - birthDate.getMonth();
+  
+  if (months < 0 || (months === 0 && deathDate.getDate() < birthDate.getDate())) {
+    years--;
+    months += 12;
+  }
+  
+  return { years, months };
+};
+
+export const formatAgeWithMonths = (age: { years: number; months: number }): string => {
+  if (age.years === 0) {
+    return `${age.months} mo`;
+  } else if (age.months === 0) {
+    return `${age.years} yrs`;
+  } else {
+    return `${age.years} yrs, ${age.months} mo`;
+  }
+};
