@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Users, Lock, Eye, EyeOff, Mail, Key } from 'lucide-react';
+import { NotebookTabs, Lock, Eye, EyeOff, Mail, Key } from 'lucide-react';
 import { familyMembers } from '../data/familyData';
 
 interface LoginFormProps {
@@ -98,7 +98,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLogin }) => {
           <div className="px-8 pt-8 pb-6 text-center">
             <div className="flex items-center justify-center mb-6">
               <div className="bg-blue-100 p-4 rounded-full">
-                <Users className="w-8 h-8 text-blue-600" />
+                <NotebookTabs className="w-8 h-8 text-blue-600" />
               </div>
             </div>
             <h1 className="text-2xl font-bold text-gray-900 mb-2">
