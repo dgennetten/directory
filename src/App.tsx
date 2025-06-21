@@ -5,10 +5,12 @@ import FamilyDirectory from './components/FamilyDirectory';
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  // Check if user was previously authenticated (optional - for session persistence)
+  // Check if user was previously authenticated (for session persistence and remembered devices)
   useEffect(() => {
-    const authStatus = sessionStorage.getItem('familyDirectoryAuth');
-    if (authStatus === 'true') {
+    const sessionAuth = sessionStorage.getItem('familyDirectoryAuth');
+    const rememberedDevice = localStorage.getItem('familyDirectoryRemembered');
+    
+    if (sessionAuth === 'true' || rememberedDevice === 'true') {
       setIsAuthenticated(true);
     }
   }, []);
@@ -21,6 +23,7 @@ function App() {
   const handleLogout = () => {
     setIsAuthenticated(false);
     sessionStorage.removeItem('familyDirectoryAuth');
+    localStorage.removeItem('familyDirectoryRemembered');
   };
 
   if (!isAuthenticated) {
